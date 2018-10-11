@@ -1,4 +1,4 @@
-package bk.sfm.com.speedflatmating.Data
+package bk.sfm.com.speedflatmating.Model
 
 import bk.sfm.com.speedflatmating.Utils.DateHandler
 

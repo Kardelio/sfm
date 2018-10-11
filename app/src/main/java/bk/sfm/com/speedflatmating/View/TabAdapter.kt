@@ -1,4 +1,4 @@
-package bk.sfm.com.speedflatmating
+package bk.sfm.com.speedflatmating.View
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

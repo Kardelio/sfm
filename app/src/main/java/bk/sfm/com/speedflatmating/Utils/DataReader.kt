@@ -1,7 +1,7 @@
 package bk.sfm.com.speedflatmating.Utils
 
 import android.content.Context
-import bk.sfm.com.speedflatmating.Data.Event
+import bk.sfm.com.speedflatmating.Model.Event
 import bk.sfm.com.speedflatmating.R
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi

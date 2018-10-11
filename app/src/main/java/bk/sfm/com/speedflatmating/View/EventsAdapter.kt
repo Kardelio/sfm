@@ -1,14 +1,17 @@
-package bk.sfm.com.speedflatmating
+package bk.sfm.com.speedflatmating.View
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import bk.sfm.com.speedflatmating.Data.Event
+import bk.sfm.com.speedflatmating.Model.Event
+import bk.sfm.com.speedflatmating.R
 import kotlinx.android.synthetic.main.element_single_event_card.view.*
 
 class EventsAdapter: RecyclerView.Adapter<EventsAdapter.BaseViewHolder>() {
     var elements: List<Event> = emptyList()
+    //actioncallback passed in?
+    //set action callback
 
     class BaseViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var heldData: Event? = null
