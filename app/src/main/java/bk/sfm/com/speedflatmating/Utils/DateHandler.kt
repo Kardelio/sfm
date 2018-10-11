@@ -22,7 +22,7 @@ class DateHandler{
         @SuppressLint("SimpleDateFormat")
         fun getJustDateAndMonth(str: String): String{
             val heldDate = convertStringToDate(str)
-            val dateFormat = SimpleDateFormat("d MMM")
+            val dateFormat = SimpleDateFormat("dd MMM")
             val d = dateFormat.format(heldDate)
             return d.toString()
         }

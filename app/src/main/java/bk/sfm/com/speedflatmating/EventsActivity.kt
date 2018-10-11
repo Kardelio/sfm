@@ -17,6 +17,7 @@ class EventsActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
+
         tabAdapter = TabAdapter(supportFragmentManager)
 
         container.adapter = tabAdapter
