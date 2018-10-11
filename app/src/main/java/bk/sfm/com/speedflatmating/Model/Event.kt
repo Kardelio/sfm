@@ -9,6 +9,9 @@ class Event(val imageUrl: String,
             val endTime: String,
             val cost: String) {
 
+    val fakePhoneNumber: String
+        get() = "01234567890"
+
     fun getJustDate(): String{
         return DateHandler.getJustDateAndMonth(startTime)
     }

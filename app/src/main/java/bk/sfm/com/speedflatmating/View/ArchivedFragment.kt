@@ -17,7 +17,6 @@ class ArchivedFragment : Fragment() {
         fun getInstance(): ArchivedFragment {
             val fragment = ArchivedFragment()
             val args = Bundle()
-            //args.putInt(ARG_SECTION_NUMBER, 1)
             fragment.arguments = args
             return fragment
         }

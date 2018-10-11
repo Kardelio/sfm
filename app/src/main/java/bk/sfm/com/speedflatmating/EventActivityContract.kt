@@ -6,6 +6,7 @@ interface EventActivityContract{
 
     interface View{
         fun displayEvents(listOfEvents: List<Event>)
+        fun triggerPhoneCall(number: String)
     }
 
     interface Actions{

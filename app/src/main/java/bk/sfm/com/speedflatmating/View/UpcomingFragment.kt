@@ -1,7 +1,12 @@
 package bk.sfm.com.speedflatmating.View
 
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.PermissionChecker.checkSelfPermission
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -15,11 +20,14 @@ import bk.sfm.com.speedflatmating.Repository.EventRepositoryInterface
 import bk.sfm.com.speedflatmating.Utils.ToastUtil
 import kotlinx.android.synthetic.main.fragment_upcoming.view.*
 
+
 class UpcomingFragment : Fragment(), EventActivityContract.View {
 
     val eventsAdapter: EventsAdapter = EventsAdapter()
     val eventsRepo: EventRepositoryInterface = EventRepository()
     var eventsPresenter: EventActivityContract.Actions? = null
+
+    var currentHeldNumber: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,16 +49,54 @@ class UpcomingFragment : Fragment(), EventActivityContract.View {
     }
 
     override fun displayEvents(listOfEvents: List<Event>) {
-        eventsAdapter.setOnClickActionCallback(object : EventsAdapter.UserInteractions{
+        eventsAdapter.setOnClickActionCallback(object : EventsAdapter.UserInteractions {
             override fun clickEventCard(event: Event) {
-                ToastUtil.displayToast(context!!,"Event Clicked: ${event.location}")
-                //TODO Call the venue
+                //ToastUtil.displayToast(context!!, "Event Clicked: ${event.location}")
+                triggerPhoneCall(event.fakePhoneNumber)
             }
         })
         eventsAdapter.provideEvents(listOfEvents)
     }
 
+    override fun triggerPhoneCall(number: String) {
+        currentHeldNumber = number
+        if(phonePermissionGranted()){
+            phoneCall()
+        } else {
+            requestPhonePermission()
+        }
+    }
+
+    private fun phonePermissionGranted(): Boolean {
+        return checkSelfPermission(context!!, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun phoneCall() {
+        currentHeldNumber?.let {
+            val intent = Intent(Intent.ACTION_CALL)
+            intent.data = Uri.parse("tel:" + it)
+            startActivity(intent)
+        }
+    }
+
+    private fun requestPhonePermission() {
+        requestPermissions(arrayOf(Manifest.permission.CALL_PHONE), PHONE_REQUEST_CODE)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            PHONE_REQUEST_CODE -> {
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    ToastUtil.displayToast(context!!,"Denied Phone Permission")
+                } else {
+                    phoneCall()
+                }
+            }
+        }
+    }
+
     companion object {
+        const val PHONE_REQUEST_CODE = 1000
         fun getInstance(): UpcomingFragment {
             val fragment = UpcomingFragment()
             val args = Bundle()
