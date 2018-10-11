@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SpeedFlatMating</string>
+    <string name="upcoming_tab_title">Upcoming</string>
+    <string name="archived_tab_title">Archived</string>
+    <string name="under_construction">Under Construction</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+</resources>

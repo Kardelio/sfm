@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="4dp"
+    app:elevation="0dp"
+    app:cardPreventCornerOverlap="false">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/overallConstraintLayout"
+        android:background="@drawable/sfm_1">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/backgroundImageView"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sfm_1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@id/overallConstraintLayout"
+            app:layout_constraintStart_toStartOf="@id/overallConstraintLayout"
+            android:background="@drawable/dark_background_box"
+            android:padding="4dp"
+            android:text="FREE"
+            android:textAllCaps="true"
+            android:id="@+id/costTextView"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:padding="0dp"
+            android:textStyle="bold"
+            android:text="Manhattan"
+            app:layout_constraintBottom_toTopOf="@id/venueTextView"
+            app:layout_constraintStart_toStartOf="@id/overallConstraintLayout"
+            android:id="@+id/cityTextView"
+            android:textColor="@color/white"
+            android:layout_marginLeft="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="14sp"
+            android:padding="0dp"
+            android:text="The Penny Farthing"
+            app:layout_constraintBottom_toBottomOf="@id/overallConstraintLayout"
+            app:layout_constraintStart_toStartOf="@id/overallConstraintLayout"
+            android:id="@+id/venueTextView"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:textSize="16sp"
+            android:padding="0dp"
+            android:textStyle="bold"
+            android:text="16th May"
+            app:layout_constraintBottom_toTopOf="@id/timeTextView"
+            app:layout_constraintEnd_toEndOf="@id/overallConstraintLayout"
+            android:id="@+id/dateTextView"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="14sp"
+            android:padding="0dp"
+            android:text="06:00 - 09:00 PM"
+            app:layout_constraintEnd_toEndOf="@id/overallConstraintLayout"
+            app:layout_constraintBottom_toBottomOf="@+id/overallConstraintLayout"
+            android:id="@+id/timeTextView"
+            android:textColor="@color/white"/>
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>
