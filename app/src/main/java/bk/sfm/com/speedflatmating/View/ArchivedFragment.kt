@@ -9,6 +9,8 @@ import bk.sfm.com.speedflatmating.R
 
 class ArchivedFragment : Fragment() {
 
+    //TODO Actually implement functionality here in future ticket
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_archived, container, false)
     }

@@ -20,7 +20,6 @@ import bk.sfm.com.speedflatmating.Repository.EventRepositoryInterface
 import bk.sfm.com.speedflatmating.Utils.ToastUtil
 import kotlinx.android.synthetic.main.fragment_upcoming.view.*
 
-
 class UpcomingFragment : Fragment(), EventActivityContract.View {
 
     val eventsAdapter: EventsAdapter = EventsAdapter()
@@ -51,7 +50,6 @@ class UpcomingFragment : Fragment(), EventActivityContract.View {
     override fun displayEvents(listOfEvents: List<Event>) {
         eventsAdapter.setOnClickActionCallback(object : EventsAdapter.UserInteractions {
             override fun clickEventCard(event: Event) {
-                //ToastUtil.displayToast(context!!, "Event Clicked: ${event.location}")
                 triggerPhoneCall(event.fakePhoneNumber)
             }
         })

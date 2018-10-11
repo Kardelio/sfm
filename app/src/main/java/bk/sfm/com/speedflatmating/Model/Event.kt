@@ -11,6 +11,8 @@ class Event(val imageUrl: String,
 
     val fakePhoneNumber: String
         get() = "01234567890"
+    //TODO this is just a fake number for the assignment
+    //TODO this will be addressed in a future ticket
 
     fun getJustDate(): String{
         return DateHandler.getJustDateAndMonth(startTime)

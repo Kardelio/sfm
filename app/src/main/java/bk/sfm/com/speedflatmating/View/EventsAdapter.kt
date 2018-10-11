@@ -23,7 +23,7 @@ class EventsAdapter: RecyclerView.Adapter<EventsAdapter.BaseViewHolder>() {
                 setUpView()
             }
 
-        fun setUpView(){
+        private fun setUpView(){
             heldData?.let {
                 itemView.costTextView.text = it.cost
                 itemView.venueTextView.text = it.venue
