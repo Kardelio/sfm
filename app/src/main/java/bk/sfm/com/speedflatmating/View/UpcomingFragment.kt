@@ -12,6 +12,7 @@ import bk.sfm.com.speedflatmating.Presenter.EventPresenter
 import bk.sfm.com.speedflatmating.R
 import bk.sfm.com.speedflatmating.Repository.EventRepository
 import bk.sfm.com.speedflatmating.Repository.EventRepositoryInterface
+import bk.sfm.com.speedflatmating.Utils.ToastUtil
 import kotlinx.android.synthetic.main.fragment_upcoming.view.*
 
 class UpcomingFragment : Fragment(), EventActivityContract.View {
@@ -40,6 +41,12 @@ class UpcomingFragment : Fragment(), EventActivityContract.View {
     }
 
     override fun displayEvents(listOfEvents: List<Event>) {
+        eventsAdapter.setOnClickActionCallback(object : EventsAdapter.UserInteractions{
+            override fun clickEventCard(event: Event) {
+                ToastUtil.displayToast(context!!,"Event Clicked: ${event.location}")
+                //TODO Call the venue
+            }
+        })
         eventsAdapter.provideEvents(listOfEvents)
     }
 

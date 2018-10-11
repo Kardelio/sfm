@@ -10,10 +10,13 @@ import kotlinx.android.synthetic.main.element_single_event_card.view.*
 
 class EventsAdapter: RecyclerView.Adapter<EventsAdapter.BaseViewHolder>() {
     var elements: List<Event> = emptyList()
-    //actioncallback passed in?
-    //set action callback
+    private var userActionCallback: UserInteractions? = null
 
-    class BaseViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+    interface UserInteractions{
+        fun clickEventCard(event: Event)
+    }
+
+    inner class BaseViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var heldData: Event? = null
             set(value) {
                 field = value
@@ -28,8 +31,16 @@ class EventsAdapter: RecyclerView.Adapter<EventsAdapter.BaseViewHolder>() {
                 itemView.backgroundImageView.setImageResource(itemView.context.resources.getIdentifier(it.imageUrl,"drawable",itemView.context.packageName))
                 itemView.dateTextView.text = it.getJustDate()
                 itemView.timeTextView.text = it.getJustStartAndEndTime()
+
+                itemView.EventCardView.setOnClickListener { _ ->
+                    userActionCallback?.clickEventCard(it)
+                }
             }
         }
+    }
+
+    fun setOnClickActionCallback(userInteraction: UserInteractions){
+        userActionCallback = userInteraction
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {

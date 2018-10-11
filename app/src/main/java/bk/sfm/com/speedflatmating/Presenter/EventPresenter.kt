@@ -12,11 +12,8 @@ class EventPresenter(val context: Context, val eav: EventActivityContract.View, 
 
     override fun loadEvents() {
         listOfEvents = ear.getAllEvents(context)
-        Log.d("BK","Data gathered! $listOfEvents")
+        Log.d("BK","Data gathered! Number of Events: ${listOfEvents.size}")
         eav.displayEvents(listOfEvents)
-        //repo get data
-        //view show cards
-
     }
 
 }
